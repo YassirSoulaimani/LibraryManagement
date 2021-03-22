@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lib.mapper.ReportsMapper">
+  <resultMap id="BaseResultMap" type="model.Reports">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="Report_id" jdbcType="INTEGER" property="reportId" />
+    <result column="reader_id" jdbcType="INTEGER" property="readerId" />
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="issue" jdbcType="VARCHAR" property="issue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    Report_id, reader_id, book_id, issue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select 
+    <include refid="Base_Column_List" />
+    from reports
+    where Report_id = #{reportId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    delete from reports
+    where Report_id = #{reportId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.Reports">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into reports (Report_id, reader_id, book_id, 
+      issue)
+    values (#{reportId,jdbcType=INTEGER}, #{readerId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
+      #{issue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Reports">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into reports
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reportId != null">
+        Report_id,
+      </if>
+      <if test="readerId != null">
+        reader_id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="issue != null">
+        issue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reportId != null">
+        #{reportId,jdbcType=INTEGER},
+      </if>
+      <if test="readerId != null">
+        #{readerId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="issue != null">
+        #{issue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Reports">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update reports
+    <set>
+      <if test="readerId != null">
+        reader_id = #{readerId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="issue != null">
+        issue = #{issue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Report_id = #{reportId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Reports">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update reports
+    set reader_id = #{readerId,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=INTEGER},
+      issue = #{issue,jdbcType=VARCHAR}
+    where Report_id = #{reportId,jdbcType=INTEGER}
+  </update>
+</mapper>

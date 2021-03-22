@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lib.mapper.ReadersMapper">
+  <resultMap id="BaseResultMap" type="model.Readers">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="User_id" jdbcType="INTEGER" property="userId" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="First_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="Last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="Phone" jdbcType="INTEGER" property="phone" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    User_id, Email, First_name, Last_name, Phone, Address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select 
+    <include refid="Base_Column_List" />
+    from readers
+    where User_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    delete from readers
+    where User_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.Readers">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into readers (User_id, Email, First_name, 
+      Last_name, Phone, Address
+      )
+    values (#{userId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
+      #{lastName,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.Readers">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into readers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        User_id,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="firstName != null">
+        First_name,
+      </if>
+      <if test="lastName != null">
+        Last_name,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Readers">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update readers
+    <set>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        First_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        Last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where User_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Readers">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update readers
+    set Email = #{email,jdbcType=VARCHAR},
+      First_name = #{firstName,jdbcType=VARCHAR},
+      Last_name = #{lastName,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=INTEGER},
+      Address = #{address,jdbcType=VARCHAR}
+    where User_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
